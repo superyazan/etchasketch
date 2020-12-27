@@ -10,15 +10,39 @@ function grid(n){
 }
 grid(16);
 
+
+const startBtn = document.getElementById('start');
 function paint(e) {
     e.target.style.cssText = "background-color:red";
 }
-gridSize.addEventListener('mouseover',paint);
+function start(){
+        gridSize.addEventListener('mouseover',paint);
+    }
+startBtn.addEventListener('click',start)
+//
+
+const stopbtn = document.getElementById('not');
+function stop(){
+    gridSize.removeEventListener('mouseover',paint);
+}
+stopbtn.addEventListener('click',stop)
+
+//
+function erase(){
+    function paintErase(e) {
+        e.target.style.cssText = "background-color:white; cursor:cell";
+    }
+    gridSize.addEventListener('mouseover',paintErase);
+}
+document.getElementById('erase').addEventListener('click', erase);
+
 
 function clear(){
-    let m = prompt('How many squares per side to make the new grid?');
-    if(m <100 && m > 0){
-        grid(m);
+    const m = document.getElementById('gridsize');
+
+    if(m.value <100 && m.value > 0){
+        gridSize.innerHTML = '';
+        grid(m.value);
     }
     else {
         document.getElementById('hun').innerHTML = `<p>choose a number between 0 and 100</p>`;
