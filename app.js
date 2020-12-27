@@ -1,3 +1,4 @@
+// adding the grid
 const gridSize = document.getElementById('grid');
 function grid(n){
     let gridIn = '';
@@ -8,9 +9,9 @@ function grid(n){
     gridSize.style.gridTemplateColumns= `repeat(${n},1fr)`;
 
 }
-grid(16);
+grid(64);
 
-
+// adding the start drawing functionality
 const startBtn = document.getElementById('start');
 function paint(e) {
     e.target.style.cssText = "background-color:red";
@@ -19,7 +20,8 @@ function start(){
         gridSize.addEventListener('mouseover',paint);
     }
 startBtn.addEventListener('click',start)
-//
+
+// adding the stop drawing functionality
 
 const stopbtn = document.getElementById('not');
 function stop(){
@@ -27,7 +29,7 @@ function stop(){
 }
 stopbtn.addEventListener('click',stop)
 
-//
+// adding an eraser functionality
 function erase(){
     function paintErase(e) {
         e.target.style.cssText = "background-color:white; cursor:cell";
@@ -36,7 +38,7 @@ function erase(){
 }
 document.getElementById('erase').addEventListener('click', erase);
 
-
+// adding the ability to choose the size of the grid
 function clear(){
     const m = document.getElementById('gridsize');
 
